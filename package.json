@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "joi": "^17.9.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  },
+  "name": "dotenv-joi",
+  "version": "0.0.1",
+  "description": "Validate values and env files with a string based version of joi",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "BolverBlitz",
+  "license": "MIT"
+}
