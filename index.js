@@ -1,7 +1,10 @@
 const { validateWithJoi } = require('./validateJoi');
 
-// Check all .env values if they are valid
-
+/**
+ * Validate all .env values
+ * @param {Object} envSchema 
+ * @returns 
+ */
 const checkEnv = (envSchema) => {
     let failed = false;
 
@@ -25,7 +28,23 @@ const checkEnv = (envSchema) => {
     return failed || false;
 }
 
+/**
+ * Generate a empty .env file from a schema
+ * @param {Object} envSchema 
+ */
+const genEnv = (envSchema) => {
+    const envKeys = Object.keys(envSchema);
+    const envFile = []
+
+    envKeys.forEach(key => {
+        envFile.push(`${key}=`)
+    })
+
+    return envFile.join('\n');
+}
+
 module.exports = {
     checkEnv,
+    genEnv,
     validateWithJoi
 }
