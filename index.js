@@ -36,9 +36,16 @@ const genEnv = (envSchema) => {
     const envKeys = Object.keys(envSchema);
     const envFile = []
 
-    envKeys.forEach(key => {
-        envFile.push(`${key}=`)
-    })
+    for (let i = 0; i < envKeys.length; i++) {
+        const key = envKeys[i];
+        const newLine = [];
+        if(envSchema[key].section) newLine.push(`\n# ${envSchema[key].section}\n`)
+        newLine.push(`${key}=`)
+        if(envSchema[key].default && envSchema[key].type === "number") newLine.push(envSchema[key].default)
+        if(envSchema[key].default && envSchema[key].type === "string") `"${newLine.push(envSchema[key].default)}"`
+        if(envSchema[key].discription) newLine.push(`# ${envSchema[key].discription}`)
+        envFile.push(newLine.join(''))
+    }
 
     return envFile.join('\n');
 }
